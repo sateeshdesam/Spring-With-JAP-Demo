@@ -1,4 +1,7 @@
 package sateesh.spring.demo.repositories;
 
-public interface AuthorRepository {
+import org.springframework.data.repository.CrudRepository;
+import sateesh.spring.demo.model.Author;
+
+public interface AuthorRepository extends CrudRepository<Author, Long> {
 }
