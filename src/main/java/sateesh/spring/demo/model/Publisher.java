@@ -1,16 +1,18 @@
 package sateesh.spring.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Entity
 public class Publisher {
     private String name;
     private String address;
     private String city;
     private String state;
+    @OneToMany
+    private Set<Book> books = new HashSet<>();
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -23,6 +25,14 @@ public class Publisher {
         this.address = address;
         this.city = city;
         this.state = state;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     public String getName() {
